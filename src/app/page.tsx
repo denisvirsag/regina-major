@@ -575,7 +575,11 @@ function InfoSection() {
                 Italia
               </address>
               <p style={{ marginTop: "1rem" }}>
-                <a href="https://maps.google.com/?q=Via+Artigianale+1+Manerbio+BS">
+                <a
+                  href="https://maps.google.com/?q=Ristorante+Pizzeria+Regina+Major,+Via+Artigianale,+1,+25025+Manerbio+BS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Apri in Google Maps →
                 </a>
               </p>
