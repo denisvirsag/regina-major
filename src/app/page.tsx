@@ -642,7 +642,7 @@ function ReservationSection() {
 
               const message = `Salve, vorrei prenotare un tavolo al Ristorante Regina Major.\n\n*Nome:* ${name}\n*Telefono:* ${phone}\n*Data:* ${date}\n*Orario:* ${time}\n*Ospiti:* ${guests}\n*Preferenza:* ${pref || 'Nessuna'}\n*Note:* ${notes || 'Nessuna'}`;
               
-              const whatsappUrl = `https://wa.me/393209518383?text=${encodeURIComponent(message)}`;
+              const whatsappUrl = `https://wa.me/393276354869?text=${encodeURIComponent(message)}`;
               window.open(whatsappUrl, '_blank');
             }}
           >
