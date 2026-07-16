@@ -142,6 +142,13 @@ img {
   gap: 0.75rem;
 }
 
+.navbar-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .navbar-logo-icon {
   font-size: 1.6rem;
 }
@@ -1351,20 +1358,8 @@ img {
   .menu-page-header, .navbar {
     padding: 1rem 0 !important; /* Makes the entire bar taller */
   }
-  .navbar-logo-icon {
-    font-size: 1.3rem !important;
-  }
-  .navbar-logo-text .small {
-    font-size: 0.58rem !important;
-    letter-spacing: 1px !important;
-  }
-  .navbar-logo-text .brand {
-    font-size: 1.1rem !important;
-    letter-spacing: 0.5px !important;
-  }
-  .navbar-logo-text .tagline {
-    font-size: 0.52rem !important;
-    letter-spacing: 1px !important;
+  .navbar-logo-img {
+    height: 38px !important;
   }
   .btn-prenota {
     padding: 0.6rem 1.4rem !important; /* Taller button but controlled width */

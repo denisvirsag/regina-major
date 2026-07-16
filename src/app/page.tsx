@@ -209,14 +209,14 @@ function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="container">
-        {/* Logo */}
         <a href="#hero" className="navbar-logo">
-          <span className="navbar-logo-icon">🍕</span>
-          <span className="navbar-logo-text">
-            <span className="small">Ristorante Pizzeria</span>
-            <span className="brand">REGINA MAJOR</span>
-            <span className="tagline">Gusto e Tradizione</span>
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Ristorante Pizzeria Regina Major"
+            width={160}
+            height={50}
+            className="navbar-logo-img"
+          />
         </a>
 
         {/* Links */}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 /* ==================== DATA ==================== */
@@ -211,12 +212,13 @@ export default function MenuPage() {
       <header className="menu-page-header">
         <div className="container menu-page-header-inner">
           <Link href="/" className="navbar-logo" style={{ textDecoration: "none" }}>
-            <span className="navbar-logo-icon">🍕</span>
-            <span className="navbar-logo-text">
-              <span className="small">Ristorante Pizzeria</span>
-              <span className="brand">REGINA MAJOR</span>
-              <span className="tagline">Gusto e Tradizione</span>
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Ristorante Pizzeria Regina Major"
+              width={160}
+              height={50}
+              className="navbar-logo-img"
+            />
           </Link>
           <Link href="/#prenota" className="btn-prenota" style={{ textDecoration: "none" }}>
             Prenota Ora
