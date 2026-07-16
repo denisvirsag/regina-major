@@ -576,7 +576,7 @@ function InfoSection() {
               </address>
               <p style={{ marginTop: "1rem" }}>
                 <a
-                  href="https://maps.google.com/?q=Ristorante+Pizzeria+Regina+Major,+Via+Artigianale,+1,+25025+Manerbio+BS"
+                  href="https://www.google.com/maps/place/Ristorante+Pizzeria+Regina+Major/@45.3548622,10.1242104,17z/data=!3m1!4b1!4m6!3m5!1s0x4781090bef44cea5:0x6106f73352f1398f!8m2!3d45.3548622!4d10.1267853!16s%2Fg%2F1ptw4z2rq?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
