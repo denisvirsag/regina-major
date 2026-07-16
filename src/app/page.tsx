@@ -787,8 +787,57 @@ function RevealWrapper({
 /* ==================== PAGE ==================== */
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Ristorante Pizzeria Regina Major",
+    "image": "https://reginamajor.it/hero.jpg",
+    "@id": "https://reginamajor.it/#restaurant",
+    "url": "https://reginamajor.it",
+    "telephone": "030 938 0709",
+    "priceRange": "€€",
+    "menu": "https://reginamajor.it/menu",
+    "servesCuisine": ["Italian", "Pizza"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Artigianale, 1",
+      "addressLocality": "Manerbio",
+      "addressRegion": "BS",
+      "postalCode": "25025",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.3548622,
+      "longitude": 10.1267853
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "11:45",
+        "closes": "14:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "18:00",
+        "closes": "00:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "reviewCount": "1772"
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <Hero />
       <MenuSection />
