@@ -614,6 +614,37 @@ function InfoSection() {
 /* ==================== PRENOTAZIONE ==================== */
 
 function ReservationSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    date: "",
+    time: "",
+    guests: "",
+    pref: "",
+    notes: ""
+  });
+
+  useEffect(() => {
+    const saved = localStorage.getItem("reservation_form_data");
+    if (saved) {
+      try {
+        setFormData(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to load saved reservation data:", e);
+      }
+    }
+  }, []);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    const key = id.replace("res-", "");
+    const newFormData = { ...formData, [key]: value };
+    setFormData(newFormData);
+    localStorage.setItem("reservation_form_data", JSON.stringify(newFormData));
+  };
+
   return (
     <section id="prenota" className="reservation-section">
       <div className="container">
@@ -631,14 +662,7 @@ function ReservationSection() {
             className="reservation-form"
             onSubmit={(e) => {
               e.preventDefault();
-              const form = e.currentTarget;
-              const name = (form.querySelector('#res-name') as HTMLInputElement).value;
-              const phone = (form.querySelector('#res-phone') as HTMLInputElement).value;
-              const date = (form.querySelector('#res-date') as HTMLInputElement).value;
-              const time = (form.querySelector('#res-time') as HTMLSelectElement).value;
-              const guests = (form.querySelector('#res-guests') as HTMLSelectElement).value;
-              const pref = (form.querySelector('#res-pref') as HTMLSelectElement).value;
-              const notes = (form.querySelector('#res-notes') as HTMLTextAreaElement).value;
+              const { name, phone, date, time, guests, pref, notes } = formData;
 
               const message = `Salve, vorrei prenotare un tavolo al Ristorante Regina Major.\n\n*Nome:* ${name}\n*Telefono:* ${phone}\n*Data:* ${date}\n*Orario:* ${time}\n*Ospiti:* ${guests}\n*Preferenza:* ${pref || 'Nessuna'}\n*Note:* ${notes || 'Nessuna'}`;
               
@@ -653,6 +677,8 @@ function ReservationSection() {
                 type="text"
                 placeholder="Mario Rossi"
                 required
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
@@ -662,15 +688,28 @@ function ReservationSection() {
                 type="tel"
                 placeholder="+39 333 123 4567"
                 required
+                value={formData.phone}
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <label htmlFor="res-date">Data</label>
-              <input id="res-date" type="date" required />
+              <input
+                id="res-date"
+                type="date"
+                required
+                value={formData.date}
+                onChange={handleChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="res-time">Orario</label>
-              <select id="res-time" required>
+              <select
+                id="res-time"
+                required
+                value={formData.time}
+                onChange={handleChange}
+              >
                 <option value="">Seleziona orario</option>
                 <option value="12:00">12:00</option>
                 <option value="12:30">12:30</option>
@@ -686,10 +725,15 @@ function ReservationSection() {
             </div>
             <div className="form-group">
               <label htmlFor="res-guests">Numero Ospiti</label>
-              <select id="res-guests" required>
+              <select
+                id="res-guests"
+                required
+                value={formData.guests}
+                onChange={handleChange}
+              >
                 <option value="">Quante persone?</option>
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                  <option key={n} value={n}>
+                  <option key={n} value={n.toString()}>
                     {n} {n === 1 ? "persona" : "persone"}
                   </option>
                 ))}
@@ -698,7 +742,11 @@ function ReservationSection() {
             </div>
             <div className="form-group">
               <label htmlFor="res-pref">Preferenza</label>
-              <select id="res-pref">
+              <select
+                id="res-pref"
+                value={formData.pref}
+                onChange={handleChange}
+              >
                 <option value="">Nessuna preferenza</option>
                 <option value="interno">Interno</option>
                 <option value="esterno">Tavolo all&apos;aperto</option>
@@ -711,6 +759,8 @@ function ReservationSection() {
                 id="res-notes"
                 placeholder="Allergie, compleanni, seggioloni..."
                 rows={3}
+                value={formData.notes}
+                onChange={handleChange}
               />
             </div>
             <button type="submit" className="btn-submit">
