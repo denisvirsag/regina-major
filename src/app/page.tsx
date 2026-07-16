@@ -207,63 +207,65 @@ function Navbar() {
   const handleLinkClick = () => setMenuOpen(false);
 
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="container">
-        <a href="#hero" className="navbar-logo">
-          <Image
-            src="/logo.png"
-            alt="Ristorante Pizzeria Regina Major"
-            width={160}
-            height={50}
-            className="navbar-logo-img"
-          />
-        </a>
+    <header>
+      <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+        <div className="container">
+          <a href="#hero" className="navbar-logo">
+            <Image
+              src="/logo.png"
+              alt="Ristorante Pizzeria Regina Major"
+              width={160}
+              height={50}
+              className="navbar-logo-img"
+            />
+          </a>
 
-        {/* Links */}
-        <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
-          <li>
-            <a href="#hero" onClick={handleLinkClick}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/menu" onClick={handleLinkClick}>
-              Il Nostro Menu
-            </a>
-          </li>
-          <li>
-            <a href="#about" onClick={handleLinkClick}>
-              Chi Siamo
-            </a>
-          </li>
-          <li>
-            <a href="#info" onClick={handleLinkClick}>
-              Orari &amp; Info
-            </a>
-          </li>
-          <li>
-            <a
-              href="#prenota"
-              className="btn-prenota"
-              onClick={handleLinkClick}
-            >
-              Prenota Ora
-            </a>
-          </li>
-        </ul>
+          {/* Links */}
+          <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
+            <li>
+              <a href="#hero" onClick={handleLinkClick}>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/menu" onClick={handleLinkClick}>
+                Il Nostro Menu
+              </a>
+            </li>
+            <li>
+              <a href="#about" onClick={handleLinkClick}>
+                Chi Siamo
+              </a>
+            </li>
+            <li>
+              <a href="#info" onClick={handleLinkClick}>
+                Orari &amp; Info
+              </a>
+            </li>
+            <li>
+              <a
+                href="#prenota"
+                className="btn-prenota"
+                onClick={handleLinkClick}
+              >
+                Prenota Ora
+              </a>
+            </li>
+          </ul>
 
-        {/* Mobile Toggle */}
-        <button
-          className="navbar-toggle"
-          onClick={() => setMenuOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </div>
-    </nav>
+          {/* Mobile Toggle */}
+          <button
+            className="navbar-toggle"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+      </nav>
+    </header>
   );
 }
 

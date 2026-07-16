@@ -206,8 +206,41 @@ export default function MenuPage() {
   const [activeTab, setActiveTab] = useState<MenuCategory>("antipasti");
   const items = fullMenu[activeTab];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FoodMenu",
+    "name": "Menù Ristorante Pizzeria Regina Major",
+    "description": "Il menù completo del Ristorante Pizzeria Regina Major a Manerbio. Antipasti rustici, pizze tradizionali cotte a legna e bevande assortite.",
+    "inLanguage": "it",
+    "url": "https://reginamajor.it/menu",
+    "mainEntityOfPage": "https://reginamajor.it/menu",
+    "hasMenuSection": tabs.map((tab) => ({
+      "@type": "MenuSection",
+      "name": tab.label,
+      "description": tab.desc,
+      "hasMenuItem": fullMenu[tab.key].map((item) => {
+        const priceClean = item.price.replace(/[^\d.,]/g, "").split("/")[0].replace(",", ".");
+        return {
+          "@type": "MenuItem",
+          "name": item.name,
+          "description": item.description,
+          "offers": {
+            "@type": "Offer",
+            "price": priceClean || "0.00",
+            "priceCurrency": "EUR"
+          }
+        };
+      })
+    }))
+  };
+
   return (
-    <div className="menu-page">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="menu-page">
       {/* ── Top Bar ── */}
       <header className="menu-page-header">
         <div className="container menu-page-header-inner">
@@ -345,5 +378,6 @@ export default function MenuPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -3,6 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://reginamajor.it"), // fallback domain placeholder
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Ristorante Pizzeria Regina Major | Manerbio",
     template: "%s | Regina Major Manerbio"
